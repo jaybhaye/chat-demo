@@ -1,7 +1,6 @@
 package com.test.grpc.chat.message;
 
 import com.test.grpc.chat.Chat;
-import com.test.grpc.chat.controller.MessageStoreController;
 import com.test.grpc.chat.repositories.ClientRepository;
 import com.test.grpc.chat.repositories.ClientRepositoryImpl;
 import com.test.grpc.chat.types.Client;

@@ -1,4 +1,4 @@
-package com.test.grpc.chat.controller;
+package com.test.grpc.chat.message;
 
 import java.util.ArrayList;
 import java.util.Date;
