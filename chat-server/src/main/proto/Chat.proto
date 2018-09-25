@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+package com.test.grpc.chat;
+
+enum Status {
+	NO_OP = 0; 
+  	SUCCESS = 1;
+  	FAILUERE = 2;
+}
+
+message ChatMessage {
+    string sender = 1;
+    string message = 2;
+    string receiver = 3;
+    google.protobuf.Timestamp timestamp = 4;
+	string authToken = 5;
+}
+
+message AuthResponse {
+    Status status = 1;
+    string authToken = 2;
+    string errorMessage = 3;
+}
+
+message AuthRequest {
+    string userId = 1;
+    string password = 2;
+}
+
+message ApiToken {
+	string userId = 1;
+	string authToken = 2;
+}
+
+message SendMessageRequest{
+	string receiver = 1;
+	string message = 2;
+	string sender = 3;
+	string authToken = 4;
+}
+
+message SendMessageResponse {
+    Status status = 1;
+    string errorMessage = 2;
+}
+
+service ChatService {
+    rpc receiveMessage(stream ChatMessage) returns (stream ChatMessage);
+    rpc login(AuthRequest) returns (AuthResponse);
+    rpc sendMessage(SendMessageRequest) returns (SendMessageResponse);
+}
